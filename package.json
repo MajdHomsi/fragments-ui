@@ -14,10 +14,11 @@
   "author": "Majd Homsi",
   "license": "UNLICENSED",
   "devDependencies": {
-    "parcel": "^2.5.0"
+    "parcel": "^2.5.0",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1"
   },
   "dependencies": {
-    "aws-amplify": "^4.3.22",
-    "express": "^4.18.1"
+    "aws-amplify": "^4.3.22"
   }
 }
