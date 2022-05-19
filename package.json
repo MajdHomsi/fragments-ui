@@ -1,0 +1,23 @@
+{
+  "name": "fragments-ui",
+  "private": true,
+  "version": "0.0.1",
+  "description": "The User Interface for my fragments microservice testing web app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx parcel loggingIn/login-logout.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MajdHomsi/fragments-ui.git"
+  },
+  "author": "Majd Homsi",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "aws-amplify": "^4.3.22",
+    "express": "^4.18.1"
+  }
+}
