@@ -5,7 +5,7 @@
   "description": "The User Interface for my fragments microservice testing web app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel loggingIn/login-logout.html"
+    "start": "npx parcel src/index.html"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,14 @@
   "devDependencies": {
     "parcel": "^2.5.0",
     "process": "^0.11.10",
-    "querystring-es3": "^0.2.1"
+    "querystring-es3": "^0.2.1",
+    "nodemon": "^2.0.16"
   },
   "dependencies": {
-    "aws-amplify": "^4.3.22"
+    "aws-amplify": "^4.3.22",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+    
   }
 }
