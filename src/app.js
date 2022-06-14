@@ -38,7 +38,7 @@ async function init() {
     else{
       fragmentSection.hidden=false;
     }
-    
+
     postBtn.onclick = () => {
       const fragmentData = document.querySelector('#inputFragment').value;
       postUserFragments(user, fragmentData);
@@ -69,8 +69,6 @@ async function init() {
   };
 
 }
-
-
 
 // Wait for the DOM to be ready, then start the app
 addEventListener('DOMContentLoaded', init);
