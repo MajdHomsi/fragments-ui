@@ -81,6 +81,7 @@ export async function getFragmentDataById(user,id) {
     const type = res.headers.get("Content-Type");
     if(type.includes("text")){
     const data = await res.text();
+    
     console.log(`Got user fragment by id ${id}:` + data);
     document.getElementById("dataBack").innerHTML = data;
     }
@@ -97,6 +98,7 @@ export async function getFragmentDataById(user,id) {
 
 }
 
+
 export async function getFragmentInfo(user,id) {
   console.log(`Requesting user fragments info by id...${id}`);
   console.log(`fetching ${apiUrl}/v1/fragments/${id}/info`);
@@ -106,6 +108,7 @@ export async function getFragmentInfo(user,id) {
         Authorization: `Bearer ${user.idToken}`,
       },
     });
+
 
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
