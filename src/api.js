@@ -119,3 +119,38 @@ export async function getFragmentInfo(user,id) {
     console.error(`Unable to call GET /v1/fragments/${id}/info`, { err });
   }
 } 
+
+export async function deleteFragment(user, id) {
+  console.log("Delete the fragment data by ID");
+
+  try {
+    const res = await fetch(`${apiUrl}/v1/fragments/${id}`, {
+      method: "DELETE",
+      headers: user.authorizationHeaders()
+    });
+    if (!res.ok) {
+      throw new Error(`${res.status} ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    console.log(`Deleted fragment ${id}`, { data });
+  } catch (err) {
+    console.error("Delete failed using /v1/fragments/:id", { err });
+  }
+}
+
+export async function updateFragment(user, id, type, metadata) {
+  try {
+    const res = await fetch(`${apiUrl}/v1/fragments/${id}`, {
+      method: "PUT",
+      headers: user.authorizationHeaders(type),
+      body: fragData,
+    });
+
+    const data = await res.json();
+    console.log(`updated fragment ${id}`);
+    console.log(data);
+  } catch (err) {
+    console.error("Unable to call PUT /v1/fragments/:id");
+  }
+}
