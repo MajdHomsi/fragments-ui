@@ -38,47 +38,55 @@ async function init() {
     postUserFragments(user,data,type);
 
   }
-  getBTN.onclick = () => {
+  getBTN.onclick = async () => {
     getUserFragments(user);
   }
-  getListBTN.onclick = () => {
+  getListBTN.onclick = async () => {
     getUserFragmentList(user);
   }
 
-  getByIdBTN.onclick = () => {
-    let id = document.querySelector('#id').value
+  getByIdBTN.onclick = async () => {
+    let id = document.querySelector('#id').value;
     getFragmentDataById(user,id);
   }
-  getInfoBTN.onclick = () => {
-  let id = document.querySelector('#id').value
+  getInfoBTN.onclick = async () => {
+  let id = document.querySelector('#id').value;
   getFragmentInfo(user,id);
  }
  deleteBtn.onclick = () => {
-  let id = document.querySelector('#id').value
+  let id = document.querySelector('#id').value;
   deleteFragment(user,id);
  }
 
  updateBtn.onclick = () => {
-  let id = document.querySelector('#id').value
+  let id = document.querySelector('#id').value;
   let data = document.querySelector('#data').value;
   let type = document.querySelector('#types').value;
   updateFragment(user,id,data,type);
  }
 
- uploadBtn.onclick = () => {
-  let image = document.querySelector('#image').files[0];
-  postUserFragments(user,image,image.type)
+ 
+ updateimgBtn.onclick = async () => {
+  let imageBtn = document.querySelector('#fragmentFile').files[0];
+  let id = document.querySelector('#id').value;
+  updateFragment(user,id,imageBtn,imageBtn.type);
+ }
+
+ uploadBtn.onclick = async () => {
+  let image = document.querySelector('#fragmentFile').files[0];
+  postUserFragments(user,image,image.type);
   };
 
   downloadBtn.onclick = async () => {
-    let id = document.querySelector('#id').value
+    let id = document.querySelector('#id').value;
     let frag = await getFragmentDataById(user,id);
-    let blob = new Blob([Buffer.from(fragment.fragment.data)], {type: fragment.type});
+    console.log(frag);
+    let blob = new Blob([Buffer.from(frag.data.data)], {type: frag.type});
     let url = window.URL.createObjectURL(blob);
     let a = document.createElement('a');
     a.href = url;
-    a.download = 'fragment.bin';
-    a.download = `${fragID}.${fragment.type.split('/')[1]}`;
+    // a.download = 'fragment.bin';
+    a.download = `${id}.${frag.type.split('/')[1]}`;
     a.click();
   }
 

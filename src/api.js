@@ -78,17 +78,19 @@ export async function getFragmentDataById(user,id) {
     if (!res.ok) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
-    const type = res.headers.get("Content-Type");
-    if(type.includes("text")){
-    const data = await res.text();
-    
-    console.log(`Got user fragment by id ${id}:` + data);
-    document.getElementById("dataBack").innerHTML = data;
-    }
-    if(type.includes("json")){
-      const data = await res.json();
-      console.log(data);
-    }
+    const data = await res.json();
+    return data;
+    // const type = res.headers.get("Content-Type");
+    // if(type.includes("text")){
+    // const data = await res.text();
+    // return data;
+    // console.log(`Got user fragment by id ${id}:` + data);
+    // document.getElementById("dataBack").innerHTML = data;
+    // }
+    // if(type.includes("json")){
+    //   const data = await res.json();
+    //   console.log(data);
+    // }
     }else{
       document.getElementById("dataBack").textContent = "id can not be empty";
     }
@@ -114,6 +116,7 @@ export async function getFragmentInfo(user,id) {
       throw new Error(`${res.status} ${res.statusText}`);
     }
     const data = await res.json();
+    return data;
     console.log(data);
   } catch (err) {
     console.error(`Unable to call GET /v1/fragments/${id}/info`, { err });
@@ -139,7 +142,7 @@ export async function deleteFragment(user, id) {
   }
 }
 
-export async function updateFragment(user, id, type, metadata) {
+export async function updateFragment(user, id, fragData, type) {
   try {
     const res = await fetch(`${apiUrl}/v1/fragments/${id}`, {
       method: "PUT",
@@ -149,6 +152,7 @@ export async function updateFragment(user, id, type, metadata) {
 
     const data = await res.json();
     console.log(`updated fragment ${id}`);
+    return data;
     console.log(data);
   } catch (err) {
     console.error("Unable to call PUT /v1/fragments/:id");
